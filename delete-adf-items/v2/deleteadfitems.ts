@@ -498,6 +498,7 @@ async function main(): Promise<boolean> {
                     Promise.all(
                         deleteTasks.map(
                             throat(1, (task: DeleteTask) => {
+                                console.log("Running delete task " + task.type);
                                 return deleteItems(datafactoryOption, taskOptions, task.filter, task.type);
                             })
                         )
